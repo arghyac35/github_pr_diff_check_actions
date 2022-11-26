@@ -1,5 +1,5 @@
 import * as core from "@actions/core";
-import * as github from '@actions/github'
+import * as github from "@actions/github";
 import parse from "parse-diff";
 
 async function run() {
@@ -24,6 +24,8 @@ async function run() {
     core.exportVariable("files", files);
     core.setOutput("files", files);
 
+    console.log("After parse diff: ", files);
+
     const result: parse.Change[] = [];
     let additionCount = 0;
     let deletetionCount = 0;
@@ -45,6 +47,14 @@ async function run() {
 
     core.exportVariable("result", result);
     core.setOutput("result", result);
+
+    console.log(
+      result,
+      " additionCount:",
+      additionCount,
+      " deletetionCount: ",
+      deletetionCount
+    );
 
     /**
      * Create a comment on the PR with the information we compiled from the
