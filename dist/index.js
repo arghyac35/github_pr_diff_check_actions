@@ -51,7 +51,7 @@ function run() {
             const token = core.getInput("github-token", { required: true });
             const findText = core.getInput("check", { required: true });
             const octokit = github.getOctokit(token);
-            const prDiff = yield octokit.rest.pulls.get({
+            const { data: prDiff } = yield octokit.rest.pulls.get({
                 owner,
                 repo,
                 pull_number,
