@@ -38,13 +38,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
-const parse_diff_1 = __importDefault(__nccwpck_require__(4833));
+const parse = __nccwpck_require__(4833);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -62,9 +59,10 @@ function run() {
                     format: "diff",
                 },
             });
-            const files = (0, parse_diff_1.default)(prDiff);
+            const files = parse(prDiff);
             core.exportVariable("files", files);
             core.setOutput("files", files);
+            console.log("After parse diff: ", files);
             const result = [];
             let additionCount = 0;
             let deletetionCount = 0;
@@ -85,6 +83,7 @@ function run() {
             });
             core.exportVariable("result", result);
             core.setOutput("result", result);
+            console.log(result, " additionCount:", additionCount, " deletetionCount: ", deletetionCount);
             /**
              * Create a comment on the PR with the information we compiled from the
              * list of changed files.

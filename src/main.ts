@@ -1,6 +1,6 @@
 import * as core from "@actions/core";
 import * as github from "@actions/github";
-import parse from "parse-diff";
+const parse = require("parse-diff");
 
 async function run() {
   try {
@@ -26,7 +26,7 @@ async function run() {
 
     console.log("After parse diff: ", files);
 
-    const result: parse.Change[] = [];
+    const result: any[] = [];
     let additionCount = 0;
     let deletetionCount = 0;
 
