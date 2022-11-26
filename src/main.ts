@@ -12,7 +12,7 @@ async function run() {
 
     const octokit = github.getOctokit(token);
 
-    const prDiff: any = await octokit.rest.pulls.get({
+    const { data: prDiff }: any = await octokit.rest.pulls.get({
       owner,
       repo,
       pull_number,
