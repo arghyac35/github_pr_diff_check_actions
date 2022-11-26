@@ -43,7 +43,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
-const github_1 = __importDefault(__nccwpck_require__(5438));
+const github = __importStar(__nccwpck_require__(5438));
 const parse_diff_1 = __importDefault(__nccwpck_require__(4833));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -53,7 +53,7 @@ function run() {
             const pull_number = Number(core.getInput("pr_number", { required: true }));
             const token = core.getInput("github-token", { required: true });
             const findText = core.getInput("check", { required: true });
-            const octokit = github_1.default.getOctokit(token);
+            const octokit = github.getOctokit(token);
             const prDiff = yield octokit.rest.pulls.get({
                 owner,
                 repo,
