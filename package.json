@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": false,
   "description": "An action that finds contains from PR",
-  "main": "dist/index.js",
+  "main": "lib/main.js",
   "scripts": {
     "build": "tsc && ncc build --source-map"
   },

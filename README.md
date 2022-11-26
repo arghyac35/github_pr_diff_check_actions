@@ -13,6 +13,9 @@ jobs:
     - name: PR Diff check
       uses: arghyac35/github_pr_diff_check_actions@main
       with:
+        owner: ${{ github.repository_owner }}
+        repo: ${{ github.event.repository.name }}
+        pr_number: ${{ github.event.number }}
         github-token: ${{github.token}}
         check: 'Test'
 ```
