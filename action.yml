@@ -15,7 +15,7 @@ inputs:
     description: "The number of the pull request"
     required: true
   github-token:
-    description: "Github token, added magically",
+    description: "Github token, added magically"
     required: true
   check:
     description: "Text that needs to be checked in the PR diff"
