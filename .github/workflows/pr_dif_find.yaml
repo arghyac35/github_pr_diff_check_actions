@@ -1,0 +1,14 @@
+name: "Check PR diff for line"
+on:
+  pull_request:
+    types: [opened, edited, ready_for_review]
+
+jobs:
+  pr_diff_check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: PR Diff check
+      uses: arghyac35/github_pr_diff_check_actions@main
+      with:
+        github-token: ${{github.token}}
+        check: 'uniqueMethod('
